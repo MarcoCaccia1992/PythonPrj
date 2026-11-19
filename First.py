@@ -79,4 +79,75 @@ if __name__ == "__main__":
     # utilizzo dizionario che ha una struttura chiave:valore, dove la chiave è univoca e il valore può essere di qualsiasi tipo
     myDict = {'nome': 'Mario', 'cognome': 'Rossi', 'eta': 30}
     print("Il dizionario è:", myDict)
-
+    # di seguito troviamo i set altra collezione un python sia literal che dichiarativa
+    mySet = {1, 2, 3, 4, 5}
+    print("Il set è:", mySet)
+    mySet1 = set([1, 2, 3, 4, 5])
+    print("Il set1 è:", mySet1) 
+    # oer aggiungere dati si usa add e si può usare frozenset per creare un set immutabile
+    setImmutabile = frozenset([1, 2, 3, 4, 5])
+    print("Il set immutabile è:", setImmutabile)
+    set4 = {1, 2, 3, 4, 5}
+    set4.add(6)
+    print("Il set4 aggiornato è:", set4)
+    # controllo se un elemento è contenuto nel set usando in
+    print("3 è nel set4:", 3 in set4)   
+    # operazione per vedere quali elementi sono in comune tra due set usando intersection
+    set5 = {4, 5, 6, 7, 8}  
+    set6 = set4.intersection(set5)
+    print("Gli elementi in comune tra set4 e set5 sono:", set6)
+    # se usiamo OR per unire due set otteniamo tutti gli elementi di entrambi i set senza duplicati
+    set7 = set4.union(set5)
+    print("L'unione di set4 e set5 è:", set7)
+    # se usiamo or per mettere i dati che sono nell'uno o nell'altro set ma non in entrambi otteniamo la differenza simmetrica
+    set8 = set4.symmetric_difference(set5)
+    print("La differenza simmetrica tra set4 e set5 è:", set8)
+    # Esempio semplice di ciclo for, che ripete le istruzioni per ogni elemento della lista.
+    for numero in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+        # Stampa il numero corrente preso dalla lista.
+        print("Numero del ciclo for:", numero)
+    # Esempio semplice di ciclo while, che ripete le istruzioni finche una condizione è vera.
+    contatore = 0
+    # Continua il ciclo finche il contatore è inferiore a 3.
+    while contatore < 3:
+        # Stampa il valore corrente del contatore.
+        print("Contatore del ciclo while:", contatore)
+        # Incrementa il contatore di 1 per avvicinarsi alla fine del ciclo.
+        contatore += 1
+    # Esempio semplice di istruzione if else, che verifica una condizione.
+    voto = 18
+    # Controlla se il voto è sufficiente.
+    if voto >= 18:
+        # Comunica che il voto è sufficiente.
+        print("Voto sufficiente")
+    # Esegue questa parte quando la condizione if è falsa.
+    else:
+        # Comunica che il voto non è sufficiente.
+        print("Voto insufficiente")
+    # Definisce l'inizio del range: il ciclo parte dal numero 2.
+    start = 2
+    # Definisce il limite finale: il ciclo si ferma prima del numero 11.
+    stop = 11
+    # Definisce il passo: il contatore aumenta di 2 ad ogni ripetizione.
+    step = 2
+    # Esegue il ciclo for usando start come valore iniziale, stop come limite esclusivo e step come incremento.
+    for numero in range(start, stop, step):
+        # Stampa il valore corrente di numero ad ogni passaggio del ciclo.
+        print("Numero del for con range:", numero)
+    # Esempio di ciclo for che usa range senza valori iniziale o passo definiti separatamente.
+    for numero in range(5):
+        # range(5) genera i numeri da 0 fino a 4.
+        print("Numero del ciclo con solo range:", numero)
+    # Primo esempio di list comprehension: trasforma ogni numero elevandolo al quadrato.
+    numeri = [1, 2, 3, 4]
+    # Crea una nuova lista usando quadrato come valore per ogni numero presente nella lista.
+    quadrati = [numero ** 2 for numero in numeri]
+    # Stampa la nuova lista dei numeri elevati al quadrato.
+    print("I quadrati sono:", quadrati)
+    # Secondo esempio di list comprehension: mantiene solo i numeri pari.
+    numeri_misti = [1, 2, 3, 4, 5, 6]
+    # Controlla ogni numero e aggiunge alla nuova lista solo quelli divisibili per 2.
+    pari = [numero for numero in numeri_misti if numero % 2 == 0]
+    # Stampa la nuova lista contenente soltanto i numeri pari.
+    print("I numeri pari sono:", pari)
+    
