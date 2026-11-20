@@ -26,6 +26,60 @@ class YellowEchoAgent:
             # Comunica all'utente che il numero è dispari.
             print("è un numero dispari")
 
+# Prima funzione con dato mutabile: modifica la lista ricevuta direttamente.
+def aggiungi_lista(numeri: list) -> None:
+    # Aggiunge il valore 10 alla fine della lista originale.
+    numeri.append(10)
+
+# Seconda funzione con dato mutabile: modifica il dizionario ricevuto.
+def aggiungi_nome(persone: dict) -> None:
+    # Inserisce una nuova coppia chiave-valore nel dizionario originale.
+    persone["Mario"] = 30
+
+# Terza funzione con dato mutabile: aggiunge un elemento al set ricevuto.
+def aggiungi_colore(colori: set) -> None:
+    # Inserisce il colore verde nel set originale.
+    colori.add("verde")
+
+# Prima funzione con dato immutabile: restituisce un nuovo numero.
+def somma_due(numero: int) -> int:
+    # Restituisce un nuovo intero ottenuto sommando 2.
+    return numero + 2
+
+# Seconda funzione con dato immutabile: restituisce una nuova stringa.
+def rendi_maiuscola(parola: str) -> str:
+    # Trasforma tutti i caratteri in maiuscolo creando una nuova stringa.
+    return parola.upper()
+
+# Terza funzione con dato immutabile: restituisce una nuova tupla.
+def aggiungi_elemento_tupla(valori: tuple) -> tuple:
+    # Crea una nuova tupla aggiungendo il valore 4 alla fine.
+    return valori + (4,)
+
+# Primo esempio: la funzione prende due liste e una variabile obbligatoria.
+def unisci_con_prefisso(prima_lista: list, seconda_lista: list, prefisso: str) -> list:
+    # Copia i dati della prima lista per non modificarla direttamente.
+    risultato = prima_lista.copy()
+    # Aggiunge al risultato tutti gli elementi della seconda lista.
+    risultato.extend(seconda_lista)
+    # Converte ogni elemento in testo e aggiunge il prefisso davanti.
+    risultato_con_prefisso = [prefisso + str(elemento) for elemento in risultato]
+    # Restituisce la nuova lista completa.
+    return risultato_con_prefisso
+
+# Secondo esempio: la seconda lista ha un valore di default, quindi può essere omessa.
+def unisci_con_separatore(prima_lista: list, seconda_lista: list = None, separatore: str = " - ") -> list:
+    # Copia la prima lista per creare un nuovo risultato.
+    risultato = prima_lista.copy()
+    # Controlla se la seconda lista è stata fornita.
+    if seconda_lista is not None:
+        # Aggiunge gli elementi della seconda lista al risultato.
+        risultato.extend(seconda_lista)
+    # Trasforma gli elementi in testo e li unisce usando il separatore.
+    testo_unito = separatore.join(str(elemento) for elemento in risultato)
+    # Restituisce una singola stringa invece di una lista.
+    return testo_unito
+
 # Esegue il blocco seguente solo se questo file viene avviato direttamente.
 if __name__ == "__main__":
     # Crea un oggetto della classe YellowEchoAgent e lo assegna alla variabile agent.
@@ -150,4 +204,95 @@ if __name__ == "__main__":
     pari = [numero for numero in numeri_misti if numero % 2 == 0]
     # Stampa la nuova lista contenente soltanto i numeri pari.
     print("I numeri pari sono:", pari)
-    
+    # Primo esempio di dict comprehension: crea un dizionario con un numero come chiave e il suo quadrato come valore.
+    numeri = [1, 2, 3, 4]
+    # Per ogni numero, la chiave è numero e il valore è numero elevato al quadrato.
+    quadrati_dict = {numero: numero ** 2 for numero in numeri}
+    # Stampa il dizionario creato dalla comprensione.
+    print("Dizionario dei quadrati:", quadrati_dict)
+    # Secondo esempio di dict comprehension: converte i nomi in chiavi e ne calcola la lunghezza come valore.
+    nomi = ["Anna", "Marco", "Luca"]
+    # Per ogni nome, crea una coppia chiave-valore contenente nome e numero di lettere.
+    lunghezze_nomi = {nome: len(nome) for nome in nomi}
+    # Stampa il dizionario con i nomi e il numero delle loro lettere.
+    print("Lunghezze dei nomi:", lunghezze_nomi)
+    # Terzo esempio di dict comprehension: mantiene solo i prodotti con prezzo inferiore a 20.
+    prezzi = {"pane": 3, "pizza": 12, "libro": 18, "computer": 500}
+    # Per ogni coppia, verifica il prezzo e mantiene solo i prodotti economici.
+    prezzi_economici = {prodotto: prezzo for prodotto, prezzo in prezzi.items() if prezzo < 20}
+    # Stampa il dizionario filtrato.
+    print("Prezzi inferiori a 20:", prezzi_economici)
+    # Primo esempio di set comprehension: crea un insieme con i quadrati dei numeri.
+    numeri = [1, 2, 2, 3, 3, 4]
+    # Calcola il quadrato di ogni numero; i duplicati vengono eliminati automaticamente dal set.
+    quadrati_set = {numero ** 2 for numero in numeri}
+    # Stampa l'insieme dei quadrati, senza valori ripetuti.
+    print("Set dei quadrati:", quadrati_set)
+    # Secondo esempio di set comprehension: crea un insieme con i caratteri unici di una parola.
+    parola = "python"
+    # Per ogni lettera della parola, inserisce la lettera nell'insieme; i caratteri ripetuti compaiono una sola volta.
+    lettere_uniche = {lettera for lettera in parola}
+    # Stampa tutte le lettere uniche della parola.
+    print("Lettere uniche:", lettere_uniche)
+    # Terzo esempio di set comprehension: seleziona soltanto i numeri pari da una lista.
+    numeri = [1, 2, 3, 4, 5, 6, 6]
+    # Verifica il resto della divisione per 2 e aggiunge al set solo i numeri pari.
+    pari_set = {numero for numero in numeri if numero % 2 == 0}
+    # Stampa il set dei numeri pari senza duplicati.
+    print("Set dei numeri pari:", pari_set)
+    # Primo uso di una funzione mutabile: passa una lista alla funzione.
+    lista_mutabile = [1, 2, 3]
+    # Modifica la lista aggiungendo il numero 10.
+    aggiungi_lista(lista_mutabile)
+    # Stampa la lista modificata dall'esterno della funzione.
+    print("Lista modificata:", lista_mutabile)
+    # Secondo uso di una funzione mutabile: passa un dizionario alla funzione.
+    persone_mutabili = {"Anna": 25}
+    # Aggiunge Mario al dizionario originale.
+    aggiungi_nome(persone_mutabili)
+    # Stampa il dizionario modificato dall'esterno della funzione.
+    print("Dizionario modificato:", persone_mutabili)
+    # Terzo uso di una funzione mutabile: passa un set alla funzione.
+    colori_mutabili = {"rosso", "blu"}
+    # Aggiunge verde al set originale.
+    aggiungi_colore(colori_mutabili)
+    # Stampa il set modificato dall'esterno della funzione.
+    print("Set modificato:", colori_mutabili)
+    # Primo uso di una funzione immutabile: passa un intero alla funzione.
+    numero_originale = 5
+    # Conserva in una nuova variabile il risultato restituito dalla funzione.
+    numero_nuovo = somma_due(numero_originale)
+    # Stampa sia il numero originale sia il nuovo numero restituito.
+    print("Numero originale:", numero_originale, "- Numero nuovo:", numero_nuovo)
+    # Secondo uso di una funzione immutabile: passa una stringa alla funzione.
+    parola_originale = "ciao"
+    # Conserva la nuova stringa maiuscola restituita dalla funzione.
+    parola_nuova = rendi_maiuscola(parola_originale)
+    # Stampa sia la stringa originale sia quella nuova.
+    print("Parola originale:", parola_originale, "- Parola nuova:", parola_nuova)
+    # Terzo uso di una funzione immutabile: passa una tupla alla funzione.
+    tupla_originale = (1, 2, 3)
+    # Conserva la nuova tupla restituita dalla funzione.
+    tupla_nuova = aggiungi_elemento_tupla(tupla_originale)
+    # Stampa sia la tupla originale sia quella nuova.
+    print("Tupla originale:", tupla_originale, "- Tupla nuova:", tupla_nuova)
+    # Primo esempio con parametri obbligatori: crea due liste e una variabile.
+    lista_a = [1, 2]
+    lista_b = [3, 4]
+    prefisso_numero = "N:"
+    # Passa entrambe le liste e il prefisso alla funzione.
+    lista_unita = unisci_con_prefisso(lista_a, lista_b, prefisso_numero)
+    # Stampa il risultato ottenuto usando tutti i parametri.
+    print("Due liste con variabile obbligatoria:", lista_unita)
+    # Secondo esempio: prepara una sola lista da usare con il valore di default.
+    lista_sola = ["mela", "pera"]
+    # Chiama la funzione senza passare la seconda lista.
+    risultato_singolo = unisci_con_separatore(lista_sola)
+    # Usa il separatore di default perché non viene specificato dall'utente.
+    print("Chiamata con una sola lista:", risultato_singolo)
+    # Prepara una seconda lista per la chiamata completa.
+    lista_aggiunta = ["pesca", "banana"]
+    # Passa entrambe le liste e modifica anche il separatore.
+    risultato_doppio = unisci_con_separatore(lista_sola, lista_aggiunta, " | ")
+    # Stampa il risultato che contiene gli elementi di entrambe le liste.
+    print("Chiamata con due liste:", risultato_doppio)
